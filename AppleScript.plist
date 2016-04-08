@@ -322,7 +322,12 @@
 	<key>Language Features</key>
 	<dict>
 		<key>Comment Pattern</key>
-		<string>(--.*$)|(\(\*(?s).*?(?-s)\*\))</string>
+		<string><![CDATA[
+			(?x:
+				(?>	(--|\#)		.*			$				) |
+				(?>	\(\*		(?s:.*?)	(?: \*\) | \z )	)
+			)
+		]]></string>
 		<key>String Pattern</key>
 		<string>"(\\.|[^"])*+"</string>
 		<key>Function Pattern</key>
@@ -331,8 +336,6 @@
 		)]]></string>
 		<key>Identifier and Keyword Character Class</key>
 		<string>\w</string>
-		<key>Close Block Comments</key>
-		<string>*)</string>
 		<key>Close Parameter Lists</key>
 		<string>)</string>
 		<key>Close Statement Blocks</key>
@@ -351,10 +354,6 @@
 		<string>\</string>
 		<key>Identifier and Keyword Characters</key>
 		<string>0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz^-_./</string>
-		<key>Open Block Comments</key>
-		<string>(*</string>
-		<key>Open Line Comments</key>
-		<string>--</string>
 		<key>Open Parameter Lists</key>
 		<string>(</string>
 		<key>Open Statement Blocks</key>
