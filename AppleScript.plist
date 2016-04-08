@@ -331,9 +331,17 @@
 		<key>String Pattern</key>
 		<string>"(\\.|[^"])*+"</string>
 		<key>Function Pattern</key>
-		<string><![CDATA[(?x:
-			^on\s+(?P<function_name>\w+).*\r(?:.*\r)*?end\s+(?P=function_name)
-		)]]></string>
+		<string><![CDATA[
+			(?x:
+				(?P<leadspace>^\s*)
+				(?P<function>
+					(on|to)\s+
+					(?P<function_name>\w+)
+					(?s:.+?)
+					\r(?P=leadspace)end\s+(?P=function_name)\b
+				)
+			)
+		]]></string>
 		<key>Identifier and Keyword Character Class</key>
 		<string>\w</string>
 		<key>Close Parameter Lists</key>
